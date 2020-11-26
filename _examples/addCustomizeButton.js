@@ -69,4 +69,4 @@ UE.registerUI('myblockquote',function(editor,uiName){
     });
 
     return btn;
-});
+}, 1, ['myEditor3', 'myEditor2']);
