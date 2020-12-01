@@ -57,16 +57,16 @@ UE.plugins["defaultfilter"] = function() {
               node.setAttr("_href", val);
             }
             break;
-          case "img":
-            //todo base64暂时去掉，后边做远程图片上传后，干掉这个
-            if ((val = node.getAttr("src"))) {
-              if (/^data:/.test(val)) {
-                node.parentNode.removeChild(node);
-                break;
-              }
-            }
-            node.setAttr("_src", node.getAttr("src"));
-            break;
+        //   case "img":
+        //     //todo base64暂时去掉，后边做远程图片上传后，干掉这个
+        //     if ((val = node.getAttr("src"))) {
+        //       if (/^data:/.test(val)) {
+        //         node.parentNode.removeChild(node);
+        //         break;
+        //       }
+        //     }
+        //     node.setAttr("_src", node.getAttr("src"));
+        //     break;
           case "span":
             if (browser.webkit && (val = node.getStyle("white-space"))) {
               if (/nowrap|normal/.test(val)) {

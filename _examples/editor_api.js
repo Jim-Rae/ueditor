@@ -84,6 +84,7 @@
             'plugins/template.js',
             'plugins/music.js',
             'plugins/autoupload.js',
+            'plugins/autouploadimg2base64.js',
             'plugins/autosave.js',
             'plugins/charts.js',
             'plugins/section.js',

@@ -283,6 +283,9 @@ UE.plugins["fiximgclick"] = (function() {
 
     if (!browser.ie && me.options.imageScaleEnabled) {
       me.addListener("click", function(type, e) {
+        // 如果是 wordimage 则不处理
+        if (e.target.getAttribute('word_img')) return;
+
         var range = me.selection.getRange(),
           img = range.getClosedNode();
 
@@ -370,6 +373,9 @@ UE.plugins["fiximgclick"] = (function() {
 
     if (browser.webkit) {
       me.addListener("click", function(type, e) {
+        // 如果是 wordimage 则不处理
+        if (e.target.getAttribute('word_img')) return;
+
         if (e.target.tagName == "IMG" && me.body.contentEditable != "false") {
           var range = new dom.Range(me.document);
           range.selectNode(e.target).select();

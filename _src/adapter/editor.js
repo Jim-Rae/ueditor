@@ -435,9 +435,10 @@
                                 toolbarItemUi = new baidu.editor.ui[toolbarItem](editor);
                             } else {
                                 if (ui.id
-                                    && utils.isArray(ui.id)
+                                    && (utils.isArray(ui.id)
                                     ? !ui.id.includes(editor.key)
-                                    : ui.id != editor.key) {
+                                    : ui.id != editor.key)
+                                ) {
                                     continue;
                                 }
                                 var itemUI = ui.execFn.call(editor, editor, toolbarItem);
