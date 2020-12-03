@@ -87,10 +87,10 @@ UE.plugins['autouploadimg2base64'] = function () {
                 }
             };
 
-            if (me.getOpt("enablePasteUpload") === false) {
+            if (me.getOpt("enablePasteUploadBase64") !== false) {
                 domUtils.on(me.body, "paste ", handler);
             }
-            if (me.getOpt("enableDragUpload") === false) {
+            if (me.getOpt("enableDragUploadBase64") !== false) {
                 domUtils.on(me.body, "drop", handler);
                 //取消拖放图片时出现的文字光标位置提示
                 domUtils.on(me.body, "dragover", function (e) {
