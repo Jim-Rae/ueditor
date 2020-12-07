@@ -7,9 +7,8 @@
  *      1.拖放文件到编辑区域，转成base64并插入到选区
  *      2.插入粘贴板的图片，转成base64并插入到选区
  *
- *      该插件与 autoupload 插件相斥，
- *      当全局配置 enableDragUpload = false 时，拖拽文件开启转 base64；
- *      当全局配置 enablePasteUpload = false 时，粘贴板的图片开启转 base64；
+ *      当全局配置 enableDragUploadBase64 = false 时，拖拽文件开启转 base64；
+ *      当全局配置 enablePasteUploadBase64 = false 时，粘贴板的图片开启转 base64；
  *
  */
 
