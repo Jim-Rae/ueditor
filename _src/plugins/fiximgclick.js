@@ -253,20 +253,24 @@ UE.plugins["fiximgclick"] = (function() {
           iframePos = domUtils.getXY(me.editor.iframe),
           editorPos = domUtils.getXY(resizer.parentNode);
 
+
+        // fixed by leijin, 2021/2/26
+        // me.editor.document.body -> me.editor.document.documentElement
+        // 由于 me.editor.document.body 外面还有一层 <html>，滚动的是 <html> 而不是 <body> ，me.editor.document.body 的 scrollLeft 和 scrollTop 永远为0，导致 resizer 错位。
         domUtils.setStyles(resizer, {
           width: target.width + "px",
           height: target.height + "px",
           left:
             iframePos.x +
               imgPos.x -
-              me.editor.document.body.scrollLeft -
+              me.editor.document.documentElement.scrollLeft -
               editorPos.x -
               parseInt(resizer.style.borderLeftWidth) +
               "px",
           top:
             iframePos.y +
               imgPos.y -
-              me.editor.document.body.scrollTop -
+              me.editor.document.documentElement.scrollTop -
               editorPos.y -
               parseInt(resizer.style.borderTopWidth) +
               "px"
@@ -286,8 +290,12 @@ UE.plugins["fiximgclick"] = (function() {
         // 如果是 wordimage 则不处理
         if (e.target.getAttribute('word_img')) return;
 
-        var range = me.selection.getRange(),
-          img = range.getClosedNode();
+        // var range = me.selection.getRange(),
+        //   img = range.getClosedNode();
+
+        // fixed by leijin, 2021/2/26
+        // 修复 resizer 出现后无法选中其他文本进入编辑状态
+        var img = e.target;
 
         if (img && img.tagName == "IMG" && me.body.contentEditable != "false") {
           if (
